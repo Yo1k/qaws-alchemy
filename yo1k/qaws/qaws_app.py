@@ -110,6 +110,9 @@ def create_app() -> Flask:
     app = Flask(__name__)
     app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:postgres@db/postgres'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {
+            'isolation_level': 'SERIALIZABLE',
+    }
     db.init_app(app)
     db_service = PgStorageService()
     question_service = JSONQuestionService()
