@@ -73,7 +73,7 @@ class PgStorageService(StorageService):
         return inserted_count
 
 
-class QServ:
+class QAWS:
     def __init__(
             self,
             db_service: PgStorageService,
@@ -113,7 +113,7 @@ def create_app() -> Flask:
     db.init_app(app)
     db_service = PgStorageService()
     question_service = JSONQuestionService()
-    qserv = QServ(
+    qaws = QAWS(
             db_service=db_service,
             questions_service=question_service
     )
@@ -130,5 +130,5 @@ def create_app() -> Flask:
     app.add_url_rule(
             rule="/",
             methods=['POST'],
-            view_func=qserv.request_questions)
+            view_func=qaws.request_questions)
     return app

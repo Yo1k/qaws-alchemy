@@ -1,8 +1,7 @@
 **/.idea/
 *.swp
 *.swo
-qserv-venv*/
-qserv-venv*
+qaws-venv*/
 harness-util/
 .editorconfig
 .mypy.ini

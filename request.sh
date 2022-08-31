@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Sends `POST` request to Flask application `qserv_app`.
+# Sends `POST` request to Flask application `qaws_app`.
 
 if [[ ${1} ]]
 then

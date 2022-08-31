@@ -1,4 +1,4 @@
-# Questions-service (qserv)
+# Q-A-web-service (qaws)
 
 <p align="right">
   <a href="https://docs.python.org/3.9/">
@@ -21,6 +21,7 @@ the application sends new requests to the public API to get unique questions);
 
 Tech stack: \
 [Flask](https://flask.palletsprojects.com/en/2.1.x/),
+[PostgreSQL](https://www.postgresql.org/),
 [Flask-SQLAlchemy](https://flask-sqlalchemy.palletsprojects.com/en/2.x/),
 [Docker](https://www.docker.com/)
 
@@ -41,12 +42,12 @@ $ sudo service docker start
 ### Build image
 
 `Dockerfile` describes modifications of [Python 3.9 parent image](https://hub.docker.com/r/library/python/tags/3.9)
-needed to build 'qserv-app' image. \
-To build Docker's 'qserv-app' image, run the following from the project 
+needed to build 'qaws-app' image. \
+To build Docker's 'qaws-app' image, run the following from the project 
 root directory: 
 
 ```shell
-$ sudo docker build --tag qserv-app .
+$ sudo docker build --tag qaws-app .
 ```
 
 ### Run containers
@@ -58,8 +59,8 @@ The 'postgres' image is used to start 'db'. 'db' uses volumes at path `./data/db
 containing DB data.  See the 
 [reference](https://docs.docker.com/compose/compose-file/) for more 
 information about structure `docker-compose.yml`.
-'web' is service that runs 'qserv-app' image and also has dependency on 'db'. Make sure you create 
-the 'qserv-app' image before starting the services.
+'web' is service that runs 'qaws-app' image and also has dependency on 'db'. Make sure you create 
+the 'qaws-app' image before starting the services.
 
 To create and run only Docker container with PostgreSQL, run from the project root directory:
 
@@ -73,7 +74,7 @@ or use flag `-d` to start the service in the background
 $ sudo docker compose up db -d
 ```
 
-To create and run Docker container with 'qserv-app' application, run from the project root directory:
+To create and run Docker container with 'qaws-app' application, run from the project root directory:
 
 ```shell
 $ sudo docker compose up
@@ -100,7 +101,7 @@ $ psql -U postgres -W -h 127.0.0.1 -p 5432 postgres
 
 Input password: 'postgres'. It is assumed you have psql - PostgreSQL interactive terminal.
 
-To send POST request to the running 'qserv-app', use:
+To send POST request to the running 'qaws-app', use:
 
 ```shell
 $ curl -X POST http://127.0.0.1:8000/ \
